@@ -8,20 +8,20 @@ namespace Catalog.API.Data
     {
         #region Implementation of ICatalogContext
 
-        public IMongoCollection<Product> ProductsCollection { get; }
+        public IMongoCollection<Product> Products { get; }
 
         #endregion
 
         public CatalogContext(IConfiguration config)
         {
-            var conString = config.GetValue<string>("DatabaseSettings.ConnectionString");
-            var dvNAme = config.GetValue<string>("DatabaseSettings.DatabaseName");
-            var collectionName = config.GetValue<string>("DatabaseSettings.CollectionName");
+            var conString = config.GetValue<string>("DatabaseSettings:ConnectionString");
+            var dvNAme = config.GetValue<string>("DatabaseSettings:DatabaseName");
+            var collectionName = config.GetValue<string>("DatabaseSettings:CollectionName");
             var client = new MongoClient(conString);
             var database = client.GetDatabase(dvNAme);
             
-            ProductsCollection = database.GetCollection<Product>(collectionName);
-            CatalogContextSeed.SeedData(ProductsCollection);
+            Products = database.GetCollection<Product>(collectionName);
+            CatalogContextSeed.SeedData(Products);
         }
     }
 }
