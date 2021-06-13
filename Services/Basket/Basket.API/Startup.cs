@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Basket.API.Controllers;
 using Basket.API.Repositories;
 
 namespace Basket.API
