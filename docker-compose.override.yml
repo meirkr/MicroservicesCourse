@@ -17,6 +17,29 @@ services:
     volumes:
       - basket_redis_data:/data
 
+  discountdb:
+    container_name: discountdb
+    environment:
+    - POSTGRES_USER=admin
+    - POSTGRES_PASSWORD=admin
+    - POSTGRES_DB=discountdb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - discount_postgres_data:/var/lib/postgresql/data/
+
+  pgadmin:
+    container_name: pgadmin
+    environment:
+    - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+    - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+      - "5050:5432"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+
   catalog.api:
     container_name: catalog.api
     environment:
@@ -40,3 +63,5 @@ services:
 volumes:
   catalog_mongo_data:
   basket_redis_data:
+  discount_postgres_data:
+  pgadmin_data:
