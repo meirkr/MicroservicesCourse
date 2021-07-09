@@ -17,7 +17,8 @@ namespace Discount.API.Repositories
         }
         private NpgsqlConnection GetDbConnection()
         {
-            return new(_configuration.GetValue<string>("DatabaseSettings::ConnectionString"));
+            var connectionString = _configuration.GetValue<string>("DatabaseSettings:ConnectionString");
+            return new(connectionString);
         }
 
 
