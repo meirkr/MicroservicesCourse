@@ -44,7 +44,7 @@ namespace Discount.API.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
 
-        [HttpPost]
+        [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateDiscount([FromBody] Coupon coupon)
