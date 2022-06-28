@@ -1,0 +1,24 @@
+@hostname = localhost
+@port = 8081
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+GET http://{{host}}/api/v1/basket/meir
+
+###
+
+POST http://{{host}}/api/v1/basket
+Content-Type: {{contentType}}
+
+{
+  "userName": "meir",
+  "items": [
+    {
+      "quantity": 2,
+      "color": "green",
+      "price": 100,
+      "productId": "id-1",
+      "productName": "some product 1"
+    }
+  ]
+}
